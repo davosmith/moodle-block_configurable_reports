@@ -245,4 +245,9 @@ $string['drilldown'] = 'Drill down';
 $string['drilldown_allregions'] = 'All categories';
 $string['drilldownsql'] = 'Drilldown SQL';
 $string['drilldowninstructions'] = 'Type %%%%DRILLDOWN_PARENT_CAT%%%% to insert the current parent category, %%%%DRILLDOWN_ALLOWED_CATS%%%% to insert a condition to restrict the available categories. Include a field aliased to \'drilldownid\' in the output to generate a link to the next level of report.\nUse \'###\' to separate queries, if you need more than one table per page.';
+$string['filterroles'] = 'Filter roles';
+$string['filterroles_summary'] = 'Show users matching a specific role';
+$string['roles'] = 'Roles';
+
+
 ?>
