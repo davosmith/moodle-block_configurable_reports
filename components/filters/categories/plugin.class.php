@@ -30,7 +30,7 @@ class plugin_categories extends plugin_base{
 		$this->form = false;
 		$this->unique = true;
 		$this->fullname = get_string('filtercategories','block_configurable_reports');
-		$this->reporttypes = array('categories','sql');
+		$this->reporttypes = array('categories','sql','sqldrilldown');
 	}
 	
 	function summary($data){
@@ -43,7 +43,7 @@ class plugin_categories extends plugin_base{
 		if(!$filter_categories)
 			return $finalelements;
 		
-		if($this->report->type != 'sql'){
+		if($this->report->type != 'sql' && $this->report->type != 'sqldrilldown'){
 				return array($filter_categories);			
 		}
 		else{
@@ -64,7 +64,7 @@ class plugin_categories extends plugin_base{
 		$reportclassname = 'report_'.$this->report->type;	
 		$reportclass = new $reportclassname($this->report);
 		
-		if($this->report->type != 'sql'){
+		if($this->report->type != 'sql' && $this->report->type != 'sqldrilldown'){
 			$components = cr_unserialize($this->report->components);		
 			$conditions = $components['conditions'];
 					

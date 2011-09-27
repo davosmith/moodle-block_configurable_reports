@@ -30,7 +30,7 @@ class plugin_startendtime extends plugin_base{
 		$this->form = false;
 		$this->unique = true;
 		$this->fullname = get_string('startendtime','block_configurable_reports');
-		$this->reporttypes = array('sql','timeline','users','courses');
+		$this->reporttypes = array('sql','sqldrilldown','timeline','users','courses');
 	}
 	
 	function summary($data){
@@ -39,7 +39,7 @@ class plugin_startendtime extends plugin_base{
 	
 	function execute($finalelements, $data){
 	
-		if($this->report->type != 'sql')
+		if($this->report->type != 'sql' && $this->report->type != 'sqldrilldown')
 			return $finalelements;
 		
 		$filter_starttime = optional_param('filter_starttime',0,PARAM_RAW);

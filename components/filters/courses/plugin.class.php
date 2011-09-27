@@ -30,7 +30,7 @@ class plugin_courses extends plugin_base{
 		$this->form = false;
 		$this->unique = true;
 		$this->fullname = get_string('filtercourses','block_configurable_reports');
-		$this->reporttypes = array('courses','sql');
+		$this->reporttypes = array('courses','sql','sqldrilldown');
 	}
 	
 	function summary($data){
@@ -43,7 +43,7 @@ class plugin_courses extends plugin_base{
 		if(!$filter_courses)
 			return $finalelements;
 		
-		if($this->report->type != 'sql'){
+		if($this->report->type != 'sql' && $this->report->type != 'sqldrilldown'){
 				return array($filter_courses);			
 		}
 		else{
@@ -64,7 +64,7 @@ class plugin_courses extends plugin_base{
 		$reportclassname = 'report_'.$this->report->type;	
 		$reportclass = new $reportclassname($this->report);
 		
-		if($this->report->type != 'sql'){
+		if($this->report->type != 'sql' && $this->report->type != 'sqldrilldown'){
 			$components = cr_unserialize($this->report->components);		
 			$conditions = $components['conditions'];
 					
